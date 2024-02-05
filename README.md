@@ -49,7 +49,7 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir problemas (issue
 ### Autores:
 
 - [Hyngrid Sousa e Silva]
-- [Luana S]
+- [Luana Lopes Santiago]
 - [Matheus K]
 - [Pedro A]
 
