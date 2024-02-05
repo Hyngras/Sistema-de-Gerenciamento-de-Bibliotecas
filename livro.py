@@ -6,3 +6,4 @@ class Livro:
         self.ano_publicacao = ano_publicacao
         self.autores = autores
         self.id_exemplar = id_exemplar
+        self.disponivel = True
