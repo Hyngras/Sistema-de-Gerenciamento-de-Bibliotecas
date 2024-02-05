@@ -1,0 +1,34 @@
+import pandas as pd
+from datetime import datetime
+
+class ListaEspera:
+    def __init__(self):
+        self.df = pd.DataFrame(columns=['Livro', 'Usuario', 'DataEntrada'])
+
+    def adicionar_usuario_espera(self, livro, usuario):
+        data_entrada = datetime.now()
+        nova_linha = pd.Series([livro, usuario, data_entrada], index=self.df.columns)
+        self.df = self.df.append(nova_linha, ignore_index=True)
+
+    def remover_usuario_espera(self, livro, usuario):
+        filtro = (self.df['Livro'] == livro) & (self.df['Usuario'] == usuario)
+        self.df = self.df[~filtro]
+
+    def listar_usuarios_espera(self, livro):
+        filtro = self.df['Livro'] == livro
+        usuarios_espera = self.df.loc[filtro, ['Usuario', 'DataEntrada']]
+        return usuarios_espera
+
+# Exemplo de uso
+lista_espera = ListaEspera()
+
+# Adicionando usuários à lista de espera
+lista_espera.adicionar_usuario_espera('LivroA', 'Usuario1')
+lista_espera.adicionar_usuario_espera('LivroA', 'Usuario2')
+
+# Removendo usuário da lista de espera
+lista_espera.remover_usuario_espera('LivroA', 'Usuario1')
+
+# Listando usuários na lista de espera para um livro
+usuarios_na_espera = lista_espera.listar_usuarios_espera('LivroA')
+print(usuarios_na_espera)
